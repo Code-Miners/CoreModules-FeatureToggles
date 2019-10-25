@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="IToggleDataProvider.cs" company="Code Miners Limited">
+// <copyright file="ILog.cs" company="Code Miners Limited">
 //  Copyright (c) 2019 Code Miners Limited
 //   
 //  This program is free software: you can redistribute it and/or modify
@@ -17,14 +17,16 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace FeatureToggles.Providers
+namespace FeatureToggles.Util
 {
-    using Models;
+    using System;
 
-    public interface IToggleDataProvider
+    public interface ILog
     {
-        Toggle GetFlag(string name);
+        void Debug(string message);
 
-        Toggle GetFlag(string name, ToggleData userData);
+        void Error(string message);
+
+        void Error(string message, Exception ex);
     }
 }

@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="IToggleDataProvider.cs" company="Code Miners Limited">
+// <copyright file="StaticToggleTests.cs" company="Code Miners Limited">
 //  Copyright (c) 2019 Code Miners Limited
 //   
 //  This program is free software: you can redistribute it and/or modify
@@ -17,14 +17,22 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace FeatureToggles.Providers
+namespace ToggleTests
 {
-    using Models;
+    using System.Diagnostics.CodeAnalysis;
+    using NUnit.Framework;
+    using TestModels;
 
-    public interface IToggleDataProvider
+    [TestFixture]
+    [ExcludeFromCodeCoverage]
+    public class StaticToggleTests
     {
-        Toggle GetFlag(string name);
+        [Test]
+        public void StaticToggleTest()
+        {
+            bool flag = StaticToggle.IsEnabled;
 
-        Toggle GetFlag(string name, ToggleData userData);
+            Assert.IsTrue(flag, "Static flag should be enabled");
+        }
     }
 }

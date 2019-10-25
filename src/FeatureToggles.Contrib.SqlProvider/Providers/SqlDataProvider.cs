@@ -17,11 +17,13 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace FeatureToggles.Providers
+namespace FeatureToggles.Contrib.SqlProvider.Providers
 {
     using System;
     using System.Data;
     using System.Data.SqlClient;
+    using FeatureToggles.Providers;
+    using Models;
 
     public class SqlDataProvider : IToggleDataProvider
     {
@@ -60,7 +62,60 @@ namespace FeatureToggles.Providers
                 
             }
 
-            return null;
+            return Toggle.Empty;
+        }
+
+        public Toggle GetFlag(string name, ToggleData userData)
+        {
+            Toggle flag;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection("ToggleFlagConnection"))
+                {
+                    conn.Open();
+
+                    using (SqlCommand reader = new SqlCommand("GetFlagWithChecks", conn))
+                    {
+                        reader.CommandType = CommandType.StoredProcedure;
+                        reader.Parameters.AddWithValue("@Name", name);
+
+                        if (!string.IsNullOrWhiteSpace(userData.UserId))
+                        {
+                            reader.Parameters.AddWithValue("UserId", userData.UserId);
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(userData.IpAddress))
+                        {
+                            reader.Parameters.AddWithValue("IpAddress", userData.IpAddress);
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(userData.UserRoles))
+                        {
+                            reader.Parameters.AddWithValue("UserRoles", userData.UserRoles);
+                        }
+
+                        object result = reader.ExecuteScalar();
+
+                        if (result == null)
+                        {
+                            flag = Toggle.Empty;
+                        }
+                        else
+                        {
+                            bool enabled = (bool)result;
+                            flag = new Toggle(name, enabled);
+                        }
+                    }
+                }
+
+                return flag;
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return Toggle.Empty;
         }
     }
 }

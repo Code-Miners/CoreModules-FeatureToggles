@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="AppConfigurationProvider.cs" company="Code Miners Limited">
+// <copyright file="StaticToggle.cs" company="Code Miners Limited">
 //  Copyright (c) 2019 Code Miners Limited
 //   
 //  This program is free software: you can redistribute it and/or modify
@@ -17,40 +17,28 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace FeatureToggles.Configuration
+namespace ToggleTests.TestModels
 {
-    using System;
-    using System.Configuration;
+    using System.Diagnostics.CodeAnalysis;
+    using FeatureToggles;
+    using FeatureToggles.Configuration;
+    using FeatureToggles.Providers;
 
-    public class AppConfigurationProvider : IToggleConfiguration
+    [ExcludeFromCodeCoverage]
+    public static class StaticToggle
     {
-        public bool SystemEnabled
+        private static readonly ToggleFactory Factory = new ToggleFactory(new AppConfigurationProvider(), new AppConfigDataProvider());
+
+        public static bool IsEnabled
         {
             get
             {
-                string value = ConfigurationManager.AppSettings.Get("Toggle:Enabled");
+                Toggle toggle = Factory.Get<StrongToggleId>();
 
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    return false;
-                }
+                // OR:
+                // Toggle toggle = Factory.Get("StaticToggle");
 
-                return value.Equals("true", StringComparison.InvariantCultureIgnoreCase);
-            }
-        }
-
-        public bool DefaultValue
-        {
-            get
-            {
-                string value = ConfigurationManager.AppSettings.Get("Toggle:DefaultValue");
-
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    return false;
-                }
-
-                return value.Equals("true", StringComparison.InvariantCultureIgnoreCase);
+                return toggle.IsEnabled;
             }
         }
     }

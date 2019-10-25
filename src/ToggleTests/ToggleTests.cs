@@ -19,6 +19,7 @@
 
 namespace ToggleTests
 {
+    using System.Diagnostics.CodeAnalysis;
     using FeatureToggles;
     using FeatureToggles.Configuration;
     using FeatureToggles.Providers;
@@ -26,6 +27,7 @@ namespace ToggleTests
     using NUnit.Framework;
 
     [TestFixture]
+    [ExcludeFromCodeCoverage]
     public class ToggleTests
     {
         [Test]

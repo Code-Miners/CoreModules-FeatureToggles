@@ -25,7 +25,7 @@ namespace FeatureToggles
     {
         private readonly bool empty;
 
-        public string Name { get; }
+        public string Name { get; protected set; }
 
         public bool IsEnabled { get; }
 
@@ -105,4 +105,6 @@ namespace FeatureToggles
             return !Equals(left, right);
         }
     }
+
+    
 }
