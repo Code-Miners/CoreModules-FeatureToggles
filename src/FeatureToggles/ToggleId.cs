@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="AppConfigurationProvider.cs" company="Code Miners Limited">
+// <copyright file="ToggleId.cs" company="Code Miners Limited">
 //  Copyright (c) 2019 Code Miners Limited
 //   
 //  This program is free software: you can redistribute it and/or modify
@@ -17,41 +17,42 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace FeatureToggles.Configuration
+namespace FeatureToggles
 {
     using System;
-    using System.Configuration;
 
-    public class AppConfigurationProvider : IToggleConfiguration
+    public abstract class ToggleId : IEquatable<ToggleId>
     {
-        public bool SystemEnabled
+        public abstract string Name { get; }
+
+        public bool Equals(ToggleId other)
         {
-            get
+            if (ReferenceEquals(other, null))
             {
-                string value = ConfigurationManager.AppSettings.Get("Toggle:Enabled");
-
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    return false;
-                }
-
-                return value.Equals("true", StringComparison.InvariantCultureIgnoreCase);
+                return false;
             }
+
+            return Name.Equals(other.Name, StringComparison.InvariantCultureIgnoreCase);
         }
 
-        public bool DefaultValue
+        public override bool Equals(object obj)
         {
-            get
-            {
-                string value = ConfigurationManager.AppSettings.Get("Toggle:DefaultValue");
+            return ReferenceEquals(this, obj) || obj is ToggleId other && Equals(other);
+        }
 
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    return false;
-                }
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
 
-                return value.Equals("true", StringComparison.InvariantCultureIgnoreCase);
-            }
+        public static bool operator ==(ToggleId left, ToggleId right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(ToggleId left, ToggleId right)
+        {
+            return !Equals(left, right);
         }
     }
 }

@@ -61,6 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationTests.cs" />
+    <Compile Include="IPAddressRangeTests.cs" />
+    <Compile Include="TestModels\StaticToggle.cs" />
+    <Compile Include="StaticToggleTests.cs" />
+    <Compile Include="TestModels\StrongToggleId.cs" />
+    <Compile Include="StrongTypeTests.cs" />
     <Compile Include="ToggleFactoryTests.cs" />
     <Compile Include="ToggleTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

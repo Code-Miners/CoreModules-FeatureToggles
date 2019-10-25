@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BA473C25-D415-4323-8A7B-A4F34CF4FE43}</ProjectGuid>
+    <ProjectGuid>{0A03F567-003B-4192-BC83-CF12861DFAC9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FeatureToggles</RootNamespace>
-    <AssemblyName>Codeminers.Core.Modules.FeatureToggles</AssemblyName>
+    <RootNamespace>FeatureToggles.Contrib.SqlProvider</RootNamespace>
+    <AssemblyName>FeatureToggles.Contrib.SqlProvider</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,31 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration\AppConfigurationProvider.cs" />
-    <Compile Include="Configuration\ToggleConfigurationSection.cs" />
-    <Compile Include="Configuration\IpAddressesElement.cs" />
-    <Compile Include="Configuration\IpAddressesElementCollection.cs" />
-    <Compile Include="Configuration\RoleElement.cs" />
-    <Compile Include="Configuration\RolesElementCollection.cs" />
-    <Compile Include="Configuration\ToggleElement.cs" />
-    <Compile Include="Configuration\ToggleElementCollection.cs" />
-    <Compile Include="Configuration\UsersElement.cs" />
-    <Compile Include="Configuration\UsersElementCollection.cs" />
-    <Compile Include="IToggleFactory.cs" />
-    <Compile Include="Models\IpAddressRange.cs" />
-    <Compile Include="Models\ToggleData.cs" />
-    <Compile Include="ToggleFactory.cs" />
-    <Compile Include="Configuration\IToggleConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\AppConfigDataProvider.cs" />
-    <Compile Include="Providers\IToggleDataProvider.cs" />
-    <Compile Include="Toggle.cs" />
-    <Compile Include="ToggleId.cs" />
-    <Compile Include="Util\ILog.cs" />
-    <Compile Include="Util\TraceLogger.cs" />
+    <Compile Include="Providers\SqlDataProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Codeminers.Modules.Core.FeatureToggles.nuspec" />
+    <ProjectReference Include="..\FeatureToggles\FeatureToggles.csproj">
+      <Project>{ba473c25-d415-4323-8a7b-a4f34cf4fe43}</Project>
+      <Name>FeatureToggles</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
