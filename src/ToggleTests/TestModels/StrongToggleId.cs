@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="IToggleDataProvider.cs" company="Code Miners Limited">
+// <copyright file="StrongToggle.cs" company="Code Miners Limited">
 //  Copyright (c) 2019 Code Miners Limited
 //   
 //  This program is free software: you can redistribute it and/or modify
@@ -17,14 +17,19 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace FeatureToggles.Providers
+namespace ToggleTests.TestModels
 {
-    using Models;
+    using System.Diagnostics.CodeAnalysis;
+    using FeatureToggles;
 
-    public interface IToggleDataProvider
+    [ExcludeFromCodeCoverage]
+    public class StrongToggleId : ToggleId
     {
-        Toggle GetFlag(string name);
+        public override string Name { get; }
 
-        Toggle GetFlag(string name, ToggleData userData);
+        public StrongToggleId() 
+        {
+            Name = GetType().Name;
+        }
     }
 }

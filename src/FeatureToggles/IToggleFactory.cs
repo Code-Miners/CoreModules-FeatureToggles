@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="IToggleDataProvider.cs" company="Code Miners Limited">
+// <copyright file="IToggleFactory.cs" company="Code Miners Limited">
 //  Copyright (c) 2019 Code Miners Limited
 //   
 //  This program is free software: you can redistribute it and/or modify
@@ -17,14 +17,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace FeatureToggles.Providers
+namespace FeatureToggles
 {
-    using Models;
-
-    public interface IToggleDataProvider
+    public interface IToggleFactory
     {
-        Toggle GetFlag(string name);
-
-        Toggle GetFlag(string name, ToggleData userData);
+        Toggle Get(string name);
+        Toggle Get<T>() where T: ToggleId;
     }
 }
