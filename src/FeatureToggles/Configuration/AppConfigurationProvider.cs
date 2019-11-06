@@ -53,5 +53,20 @@ namespace FeatureToggles.Configuration
                 return value.Equals("true", StringComparison.InvariantCultureIgnoreCase);
             }
         }
+
+        public string Environment
+        {
+            get
+            {
+                string value = ConfigurationManager.AppSettings.Get("Toggle:Environment");
+
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    return "production";
+                }
+
+                return value;
+            }
+        }
     }
 }

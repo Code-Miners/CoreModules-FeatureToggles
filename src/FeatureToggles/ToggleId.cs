@@ -21,9 +21,19 @@ namespace FeatureToggles
 {
     using System;
 
-    public abstract class ToggleId : IEquatable<ToggleId>
+    public class ToggleId : IEquatable<ToggleId>
     {
-        public abstract string Name { get; }
+        public string Name { get; protected set; }
+
+        protected ToggleId()
+        {
+            Name = string.Empty;
+        }
+
+        public ToggleId(string name)
+        {
+            Name = name;
+        }
 
         public bool Equals(ToggleId other)
         {

@@ -25,9 +25,7 @@ namespace ToggleTests.TestModels
     [ExcludeFromCodeCoverage]
     public class StrongToggleId : ToggleId
     {
-        public override string Name { get; }
-
-        public StrongToggleId() 
+        public StrongToggleId()
         {
             Name = GetType().Name;
         }
