@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="TraceLogger.cs" company="Code Miners Limited">
+// <copyright file="ToggleDataModel.cs" company="Code Miners Limited">
 //  Copyright (c) 2019 Code Miners Limited
 //   
 //  This program is free software: you can redistribute it and/or modify
@@ -17,29 +17,43 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-
-namespace FeatureToggles.Util
+namespace FeatureToggles.Contrib.SqlProvider.Providers
 {
-    using System;
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-
-    [ExcludeFromCodeCoverage]
-    public class TraceLogger : ILog
+    public class ToggleDataModel
     {
-        public void Debug(string message)
+        private readonly bool empty;
+
+        public bool DefaultState { get; }
+
+        public string UserRoles { get; }
+
+        public string IpAddress { get; }
+
+        public string UserId { get; }
+
+        public static ToggleDataModel Empty => new ToggleDataModel();
+
+        private ToggleDataModel()
         {
-            Trace.TraceInformation(message);
+            empty = true;
         }
 
-        public void Error(string message)
+        public ToggleDataModel(bool defaultState, string userRoles, string ipAddress, string userId)
         {
-            Trace.TraceError(message);
+            DefaultState = defaultState;
+            UserRoles = userRoles;
+            IpAddress = ipAddress;
+            UserId = userId;
         }
 
-        public void Error(string message, Exception ex)
+        public static bool IsNullOrEmpty(ToggleDataModel model)
         {
-            Trace.TraceError(string.Concat(message, Environment.NewLine, ex.StackTrace));
+            if (model == null)
+            {
+                return true;
+            }
+
+            return model.empty;
         }
     }
 }

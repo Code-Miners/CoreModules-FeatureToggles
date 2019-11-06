@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="IToggleConfiguration.cs" company="Code Miners Limited">
+// <copyright file="ToggleIdTests.cs" company="Code Miners Limited">
 //  Copyright (c) 2019 Code Miners Limited
 //   
 //  This program is free software: you can redistribute it and/or modify
@@ -17,14 +17,30 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace FeatureToggles.Configuration
+namespace ToggleTests
 {
-    public interface IToggleConfiguration
-    { 
-        bool SystemEnabled { get; }
+    using FeatureToggles;
+    using NUnit.Framework;
 
-        bool DefaultValue { get; }
+    [TestFixture]
+    public class ToggleIdTests
+    {
+        [Test]
+        public void EqualityTest()
+        {
+            ToggleId id = new ToggleId("test");
+            ToggleId id2 = new ToggleId("test");
 
-        string Environment { get; }
+            Assert.AreEqual(id, id2, "Toggle ids have the same name so should be equal");
+        }
+
+        [Test]
+        public void InequalityTest()
+        {
+            ToggleId id = new ToggleId("test");
+            ToggleId id2 = new ToggleId("test2");
+
+            Assert.AreNotEqual(id, id2, "Toggle ids have the different names so should be different");
+        }
     }
 }
