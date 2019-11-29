@@ -5,7 +5,7 @@
     <title>Core: Feature Toggles</title>
     <authors>Codeminers Limited</authors>
     <owners>Codeminers Limited</owners>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <projectUrl>https://www.codeminers.co.uk</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A utility library for using feature toggles</description>
