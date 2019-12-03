@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{50EE0E1E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlProviderTests", "SqlProviderTests\SqlProviderTests.csproj", "{6F438CBA-0016-406D-85AF-6FF89664492A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeatureToggles.Contrib.Mvc", "FeatureToggles.Contrib.Mvc\FeatureToggles.Contrib.Mvc.csproj", "{041B57FF-3D7C-4BC9-B66E-9B7FD0F9B866}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{6F438CBA-0016-406D-85AF-6FF89664492A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F438CBA-0016-406D-85AF-6FF89664492A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F438CBA-0016-406D-85AF-6FF89664492A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{041B57FF-3D7C-4BC9-B66E-9B7FD0F9B866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{041B57FF-3D7C-4BC9-B66E-9B7FD0F9B866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{041B57FF-3D7C-4BC9-B66E-9B7FD0F9B866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{041B57FF-3D7C-4BC9-B66E-9B7FD0F9B866}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

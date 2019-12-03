@@ -104,10 +104,10 @@ namespace FeatureToggles.Contrib.SqlProvider.Providers
                         {
                             while (result.Read())
                             {
-                                string userRoles = result.GetString(result.GetOrdinal("Roles"));
-                                string ipAddress = result.GetString(result.GetOrdinal("IpAdddress"));
-                                string userId = result.GetString(result.GetOrdinal("Roles"));
-                                bool defaultState = result.GetBoolean(result.GetOrdinal("defaultState"));
+                                string userRoles = result.GetString(result.GetOrdinal("roles"));
+                                string ipAddress = result.GetString(result.GetOrdinal("ipAdddress"));
+                                string userId = result.GetString(result.GetOrdinal("userId"));
+                                bool defaultState = result.GetBoolean(result.GetOrdinal("state"));
 
                                 model = new ToggleDataModel(defaultState, userRoles, ipAddress, userId);
                             }

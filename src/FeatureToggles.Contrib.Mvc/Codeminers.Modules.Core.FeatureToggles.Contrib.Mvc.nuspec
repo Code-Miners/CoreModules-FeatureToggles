@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata minClientVersion="2.5">
-    <id>Codeminers.Core.Modules.FeatureToggles</id>
-    <title>Core: Feature Toggles</title>
+    <id>Codeminers.Core.Modules.FeatureToggles.Contrib.Mvc</id>
+    <title>Core: Feature Toggles MVC</title>
     <authors>Codeminers Limited</authors>
     <owners>Codeminers Limited</owners>
-    <version>1.2.0</version>
+    <version>1.0.0</version>
     <projectUrl>https://www.codeminers.co.uk</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>A utility library for using feature toggles</description>
+    <description>A utility library for using feature toggles with MVC</description>
     <releaseNotes>First release</releaseNotes>
     <copyright>Copyright Codeminers Limited © 2019</copyright>
     <license type="expression">LGPL-3.0-or-later</license>
@@ -17,6 +17,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="bin/release/Codeminers.Core.Modules.FeatureToggles.dll" target="lib/net452"></file>
+    <file src="bin/release/Codeminers.Core.Modules.FeatureToggles.Contrib.Mvc.dll" target="lib/net452"></file>
   </files>
 </package>
