@@ -5,7 +5,7 @@
     <title>Core: Feature Toggles with SQL Server</title>
     <authors>Codeminers Limited</authors>
     <owners>Codeminers Limited</owners>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <projectUrl>https://www.codeminers.co.uk</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A utility library for using feature toggles with MVC</description>
@@ -13,10 +13,10 @@
     <copyright>Copyright Codeminers Limited © 2019</copyright>
     <license type="expression">LGPL-3.0-or-later</license>
     <dependencies>
-      <group targetFramework="net452" />
+      <group targetFramework="net472" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin/release/Codeminers.FeatureToggles.Contrib.SqlProvider" target="lib/net452"></file>
+    <file src="bin/release/Codeminers.FeatureToggles.Contrib.SqlProvider" target="lib/net472"></file>
   </files>
 </package>
